@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retro Control Panel</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #0d0d0d;
+            color: #00ff00;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: 50px auto;
+            border: 5px solid #00ff00;
+            padding: 20px;
+            background-color: #222222;
+        }
+
+        h1 {
+            text-align: center;
+            color: #00ff00;
+            font-size: 36px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .panel-section {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+        }
+
+        .button-group, .display {
+            width: 48%;
+            padding: 20px;
+            border: 3px solid #00ff00;
+            background-color: #111111;
+        }
+
+        .button-group button {
+            background-color: #222;
+            color: #00ff00;
+            border: 2px solid #00ff00;
+            padding: 10px;
+            width: 100%;
+            font-size: 18px;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        .button-group button:hover {
+            background-color: #333;
+        }
+
+        .display {
+            font-size: 18px;
+            line-height: 1.5;
+            color: #00ff00;
+        }
+
+        .status-light {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background-color: #333;
+            border: 2px solid #00ff00;
+            margin-right: 10px;
+        }
+
+        .status-light.active {
+            background-color: #00ff00;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 10px;
+            font-size: 14px;
+            color: #00ff00;
+            border-top: 2px solid #00ff00;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Retro Control Panel</h1>
+
+        <div class="panel-section">
+            <!-- Left Panel Buttons -->
+            <div class="button-group">
+                <button onclick="toggleLight('light1')">Activate Module A</button>
+                <button onclick="toggleLight('light2')">Activate Module B</button>
+                <button onclick="toggleLight('light3')">Activate Module C</button>
+                <button onclick="alert('System Overload!')">System Overload</button>
+            </div>
+
+            <!-- Right Panel Display -->
+            <div class="display">
+                <p><span class="status-light" id="light1"></span> Module A Status: <strong>Inactive</strong></p>
+                <p><span class="status-light" id="light2"></span> Module B Status: <strong>Inactive</strong></p>
+                <p><span class="status-light" id="light3"></span> Module C Status: <strong>Inactive</strong></p>
+                <p>System Diagnostics: <strong>Operational</strong></p>
+                <p>Error Log: <strong>None</strong></p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>© 2024 Retro Tech. All systems operational.</p>
+        </div>
+    </div>
+
+    <script>
+        function toggleLight(id) {
+            var light = document.getElementById(id);
+            if (light.classList.contains('active')) {
+                light.classList.remove('active');
+                light.nextElementSibling.innerHTML = "<strong>Inactive</strong>";
+            } else {
+                light.classList.add('active');
+                light.nextElementSibling.innerHTML = "<strong>Active</strong>";
+            }
+        }
+    </script>
+</body>
+</html>
